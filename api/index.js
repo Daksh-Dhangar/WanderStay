@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors({
     credentials: true,
-    origin: 'http://127.0.0.1:5173', // what kind of app can communicate with this api
+    //origin: 'http://127.0.0.1:5173', // what kind of app can communicate with this api
 }));
 
 async function uploadToS3(path, originalFilename, mimetype) {
