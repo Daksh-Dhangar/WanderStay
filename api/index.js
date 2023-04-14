@@ -28,6 +28,12 @@ app.use(cors({
     origin: '*',    //'http://127.0.0.1:5173', // what kind of app can communicate with this api
 }));
 
+/*
+app.use(cors({
+    credentials: true,
+    origin: 'http://127.0.0.1:5173',
+  }));
+  */
 //app.use(cors());
 async function uploadToS3(path, originalFilename, mimetype) {
     const client = new S3Client({
