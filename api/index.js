@@ -22,14 +22,14 @@ const bucket = 'daksh-booking-app';
 app.use(express.json()); // to convert json to javascript object
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
-/*
+
 app.use(cors({
     credentials: true,
-    origin: 'https://wander-stay-7g3f5v5n6-daksh-dhangar.vercel.app/',
+    origin: 'https://wander-stay.vercel.app',
    //'http://127.0.0.1:5173', // what kind of app can communicate with this api
 }));
-*/
 
+/*
 app.use(cors({
     credentials: true,
     origin: '*',
@@ -37,14 +37,17 @@ app.use(cors({
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*') // allow requests from any domain
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    
     next()
   })
+*/
+
 /*
 app.use(cors({
     credentials: true,
     origin: 'http://127.0.0.1:5173',
   }));
-  */
+*/
 //app.use(cors());
 async function uploadToS3(path, originalFilename, mimetype) {
     const client = new S3Client({
