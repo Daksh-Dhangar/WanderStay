@@ -23,10 +23,12 @@ app.use(express.json()); // to convert json to javascript object
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
+/*
 app.use(cors({
     credentials: true,
     origin: '*',
   }));
+*/
 /*
 app.use(cors({
     credentials: true,
@@ -53,7 +55,7 @@ app.use(cors({
     origin: 'http://127.0.0.1:5173',
   }));
 */
-//app.use(cors());
+app.use(cors());
 async function uploadToS3(path, originalFilename, mimetype) {
     const client = new S3Client({
         region: 'ap-south-1',
@@ -190,7 +192,7 @@ app.post('/api/upload', photosMiddleware.array('photos', 100), async (req, res) 
     res.json(uploadedFiles);
 })
 
-app.post('/api/places', (req, res) => {
+app.post('/api/places', (req ,res) => {
 
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
