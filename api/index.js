@@ -30,7 +30,7 @@ app.use(cors({
 
 async function uploadToS3(path, originalFilename, mimetype) {
   const client = new S3Client({
-    region: 'ap-south-1',
+    region: 'us-east-1',
     credentials: {
       accessKeyId: process.env.S3_ACCESS_KEY,
       secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
