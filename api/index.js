@@ -25,10 +25,15 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(cors({
     credentials: true,
+    origin: true,
+  }));
+/*
+app.use(cors({
+    credentials: true,
     origin: 'https://wander-stay.vercel.app',
    //'http://127.0.0.1:5173', // what kind of app can communicate with this api
 }));
-
+*/
 /*
 app.use(cors({
     credentials: true,
