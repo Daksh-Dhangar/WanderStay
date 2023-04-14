@@ -25,6 +25,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(cors({
     credentials: true,
+    origin: 'https://wander-stay-7g3f5v5n6-daksh-dhangar.vercel.app/',
    //'http://127.0.0.1:5173', // what kind of app can communicate with this api
 }));
 
