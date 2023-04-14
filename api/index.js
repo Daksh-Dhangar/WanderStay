@@ -25,7 +25,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(cors({
     credentials: true,
-    origin: true,
+    origin: '*',
   }));
 /*
 app.use(cors({
@@ -303,4 +303,6 @@ app.get('/api/bookings', async (req, res) => {
     res.json(await Booking.find({ user: userData.id }).populate('place'));
 })
 
-app.listen(4000);
+const port = process.env.PORT || 4000;
+
+app.listen(port);
