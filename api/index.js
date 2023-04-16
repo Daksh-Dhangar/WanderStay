@@ -256,7 +256,7 @@ const bucket = 'daksh-booking-app';
 
 app.use(express.json()); // to convert json to javascript object
 app.use(cookieParser());
-//app.use('/uploads', express.static(__dirname + '/uploads'));
+app.use('/uploads', express.static(__dirname + '/uploads'));
 /*
 app.use(cors({
     credentials: true,
@@ -283,12 +283,12 @@ app.use((req, res, next) => {
   })
 */
 
-/*
+
 app.use(cors({
     credentials: true,
     origin: 'http://127.0.0.1:5173',
   }));
-*/
+
 //app.use(cors());
 async function uploadToS3(path, originalFilename, mimetype) {
     const client = new S3Client({
@@ -323,7 +323,7 @@ function getUserDataFromReq(req) {
 }
 
 app.get('/api/test', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
@@ -333,7 +333,7 @@ app.get('/api/test', (req, res) => {
 //Daksh0000
 app.post('/api/register', async (req, res) => {
     //  console.log('x');
-    res.setHeader('Access-Control-Allow-Origin', '*');
+   // res.setHeader('Access-Control-Allow-Origin', '*');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
@@ -352,7 +352,7 @@ app.post('/api/register', async (req, res) => {
 });
 
 app.post('/api/login', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+ // res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5173');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
@@ -380,7 +380,7 @@ app.post('/api/login', async (req, res) => {
 });
 
 app.get('/api/profile', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
@@ -398,12 +398,12 @@ app.get('/api/profile', (req, res) => {
 })
 
 app.post('/api/logout', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+ // res.setHeader('Access-Control-Allow-Origin', '*');
     res.cookie('token', '').json(true);
 })
 
 app.post('/api/upload-by-link', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
     const { link } = req.body;
     const newName = 'photo' + Date.now() + '.jpg';
     await imageDownloader.image({
@@ -416,7 +416,7 @@ app.post('/api/upload-by-link', async (req, res) => {
 
 const photosMiddleware = multer({ dest: '/tmp' });
 app.post('/api/upload', photosMiddleware.array('photos', 100), async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
     const uploadedFiles = [];
     // console.log("server");
     //console.log(req.files);
@@ -429,7 +429,7 @@ app.post('/api/upload', photosMiddleware.array('photos', 100), async (req, res) 
 })
 
 app.post('/api/places', (req ,res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+ // res.setHeader('Access-Control-Allow-Origin', '*');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
@@ -452,7 +452,7 @@ app.post('/api/places', (req ,res) => {
 })
 
 app.get('/api/user-places', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
@@ -465,7 +465,7 @@ app.get('/api/user-places', (req, res) => {
 })
 
 app.get('/api/places/:id', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  //res.setHeader('Access-Control-Allow-Origin', '*');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
@@ -475,7 +475,7 @@ app.get('/api/places/:id', async (req, res) => {
 })
 
 app.put('/api/places', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+ // res.setHeader('Access-Control-Allow-Origin', '*');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
@@ -501,7 +501,7 @@ app.put('/api/places', async (req, res) => {
 })
 
 app.get('/api/places', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+//  res.setHeader('Access-Control-Allow-Origin', '*');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
@@ -510,7 +510,7 @@ app.get('/api/places', async (req, res) => {
 })
 
 app.post('/api/bookings', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+ //res.setHeader('Access-Control-Allow-Origin', '*');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
@@ -531,7 +531,7 @@ app.post('/api/bookings', async (req, res) => {
 })
 
 app.get('/api/bookings', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+ // res.setHeader('Access-Control-Allow-Origin', '*');
     async function run() {
         await mongoose.connect(process.env.MONGO_URL);
     }
