@@ -28,7 +28,7 @@ app.use(cors({
   credentials: true,
   origin: process.env.VERCEL_URL,
 }));
-
+console.log(process.env.VERCEL_URL)
 async function uploadToS3(path, originalFilename, mimetype) {
   const client = new S3Client({
     region: 'ap-south-1',
