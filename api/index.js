@@ -26,7 +26,13 @@ app.use('/uploads', express.static(__dirname+'/uploads'));
 app.use(cors({
   credentials: true,
   origin: process.env.VERCEL_URL,
+  //origin: 'http://127.0.0.1:5173',
 }));
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', process.env.VERCEL_URL);
+  // ... other middleware or route handlers
+});
 console.log(process.env.VERCEL_URL)
 
 async function uploadToS3(path, originalFilename, mimetype) {
